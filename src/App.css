@@ -1,19 +1,18 @@
 form {
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
+  align-content: flex-start;
 }
 
-.likesButton {
+button {
   margin: 10px;
   width: 100px;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: dodgerblue;
   border: none;
   border-radius: 10px;
   color: white;
   padding: 10px 10px;
   outline: none;
-  box-shadow: 0 3px 0 0 blue;
   transition: box-shadow 0.5s, transform 0.5s;
   cursor: pointer;
 }
@@ -21,4 +20,24 @@ form {
 button:active {
   transform: translateY(3px);
   box-shadow: none;
+}
+
+#likeButtonContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.likesButton {
+  background-color: dodgerblue;
+  box-shadow: 0 3px 0 0 blue;
+}
+
+#upgradesContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.upgradeButton {
+  background-color: forestgreen;
+  box-shadow: 0 3px 0 0 darkgreen;
 }
