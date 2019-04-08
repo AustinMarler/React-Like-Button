@@ -1,26 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 
+library.add(faThumbsUp)
+
 class App extends Component {
+  state = {
+    numLikes: 0,
+    likeStr: "Likes"
+  }
+
+  changeLikeButton = (e) => {
+
+    e.preventDefault();
+
+    this.setState({
+      numLikes: Number(this.state.numLikes) + 1
+    });
+
+    if (Number(this.state.numLikes) === 0) {
+      this.setState({
+        likeStr: "Like"
+      });
+    } else {
+      this.setState({
+        likeStr: "Likes"
+      });
+    }
+
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <form onSubmit={this.changeLikeButton}>
+        <button className="likesButton" type="submit"><FontAwesomeIcon icon={faThumbsUp} /> {this.state.numLikes} {this.state.likeStr}</button>
+      </form>
     );
   }
 }
